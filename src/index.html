@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Markdown rendering</title>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    </head>
+    <body>
+        <div class="md"></div>
+        <script>
+            async function getmd() {
+                let res = await fetch("https://raw.githubusercontent.com/WizzyGeek/tisc/main/README.md");
+                let con = await res.text();
+                document.getElementsByClassName("md")[0].innerHTML = marked.parse(con);
+            }
+
+            getmd().then(() => console.log("Done"))
+        </script>
+    </body>
+</html>
